@@ -1,6 +1,6 @@
 /**
- * * Nama : Irfandi Iqbal Abimanyu
- * * Kelas : Fullstack Website Batch 3
+ * * Nama		: Irfandi Iqbal Abimanyu
+ * * Kelas	: Fullstack Website Batch 3
  *
  * * Soal 1
  * ? Buat dan jelaskanlah 10 method bawaan JavaScript (Built-in Functions)
