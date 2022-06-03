@@ -21,29 +21,29 @@ const seleksiNilai = (nilaiAwal, nilaiAkhir, dataArray) => {
 
 	// Melakukan validasi parameter function
 	if (typeof nilaiAwal !== "number") {
-		errorMsg.push("[!] Nilai awal yang dimasukkan harus number!");
+		errorMsg.push("[x] Nilai awal yang dimasukkan harus number!");
 		error = true;
 	}
 	if (typeof nilaiAkhir !== "number") {
-		errorMsg.push("[!] Nilai akhir yang dimasukkan harus number!");
+		errorMsg.push("[x] Nilai akhir yang dimasukkan harus number!");
 		error = true;
 	}
 	if (!Array.isArray(dataArray)) {
-		errorMsg.push("[!] Data yang dimasukkan harus array!");
+		errorMsg.push("[x] Data yang dimasukkan harus array!");
 		error = true;
 	}
 
 	if (!error) {
 		if (nilaiAwal > nilaiAkhir) {
-			console.log("[!] Nilai akhir harus lebih besar dari nilai awal");
+			console.log("[x] Nilai akhir harus lebih besar dari nilai awal");
 		} else if (dataArray.length <= 5) {
-			console.log("[!] Jumlah angka dalam dataArray harus lebih dari 5");
+			console.log("[x] Jumlah angka dalam dataArray harus lebih dari 5");
 		} else {
 			let result = dataArray
 				.filter((el) => el >= nilaiAwal && el <= nilaiAkhir)
 				.sort((a, b) => a - b);
 			if (result.length === 0) {
-				console.log("[!] Nilai tidak ditemukan :", result);
+				console.log("[x] Nilai tidak ditemukan :", result);
 			} else {
 				console.log(result);
 			}
