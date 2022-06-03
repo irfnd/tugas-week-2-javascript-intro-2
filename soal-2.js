@@ -32,8 +32,25 @@ const names = [
  * * callback function showResult
  * * untuk menampilkan array dengan batas output
  */
-const showResult = (arr, jumlah) => {
-	console.log(arr.slice(0, jumlah >= arr.length ? arr.length : jumlah));
+const showResult = (arr, limit) => {
+	let error = false;
+	let errorMsg = [];
+
+	// Melakukan validasi parameter function
+	if (!Array.isArray(arr)) {
+		errorMsg.push("[!] Data yang dimasukkan harus array!");
+		error = true;
+	}
+	if (typeof limit !== "number") {
+		errorMsg.push("[!] Limit yang dimasukkan harus number!");
+		error = true;
+	}
+
+	if (!error) {
+		return arr.slice(0, limit);
+	} else {
+		return errorMsg.join("\n");
+	}
 };
 
 /**
@@ -42,9 +59,32 @@ const showResult = (arr, jumlah) => {
  * * apakah terdapat query didalamnya, serta memanggil callback fungsi
  * * untuk menampilkan hasil pencarian dengan batas output
  */
-const searchName = (query, jumlah, callback) => {
-	let result = names.filter((el) => el.toLowerCase().includes(query));
-	callback(result, jumlah);
+const searchName = (filter, limit = 1, callback) => {
+	let error = false;
+	let errorMsg = [];
+
+	// Melakukan validasi parameter function
+	if (typeof filter !== "string") {
+		errorMsg.push("[x] Filter yang dimasukkan harus string!");
+		error = true;
+	}
+	if (typeof limit !== "number") {
+		errorMsg.push("[x] Limit yang dimasukkan harus number!");
+		error = true;
+	}
+	if (typeof callback !== "function") {
+		errorMsg.push("[x] Callback yang dimasukkan harus function!");
+		error = true;
+	}
+
+	if (!error) {
+		let result = names.filter((el) =>
+			el.toLowerCase().includes(filter.toLowerCase())
+		);
+		console.log(callback(result, limit));
+	} else {
+		console.log(errorMsg.join("\n"));
+	}
 };
 
 searchName("an", 3, showResult);
