@@ -16,19 +16,40 @@
  * * Dan ketentuan pencarian data sesuai dengan soal di atas.
  */
 const seleksiNilai = (nilaiAwal, nilaiAkhir, dataArray) => {
-	if (nilaiAwal > nilaiAkhir) {
-		console.log("Nilai akhir harus lebih besar dari nilai awal");
-	} else if (dataArray.length <= 5) {
-		console.log("Jumlah angka dalam dataArray harus lebih dari 5");
-	} else {
-		let result = dataArray
-			.filter((el) => el >= nilaiAwal && el <= nilaiAkhir)
-			.sort((a, b) => a - b);
-		if (result.length === 0) {
-			console.log("Nilai tidak ditemukan");
+	let error = false;
+	let errorMsg = [];
+
+	// Melakukan validasi parameter function
+	if (typeof nilaiAwal !== "number") {
+		errorMsg.push("[!] Nilai awal yang dimasukkan harus number!");
+		error = true;
+	}
+	if (typeof nilaiAkhir !== "number") {
+		errorMsg.push("[!] Nilai akhir yang dimasukkan harus number!");
+		error = true;
+	}
+	if (!Array.isArray(dataArray)) {
+		errorMsg.push("[!] Data yang dimasukkan harus array!");
+		error = true;
+	}
+
+	if (!error) {
+		if (nilaiAwal > nilaiAkhir) {
+			console.log("[!] Nilai akhir harus lebih besar dari nilai awal");
+		} else if (dataArray.length <= 5) {
+			console.log("[!] Jumlah angka dalam dataArray harus lebih dari 5");
 		} else {
-			console.log(result);
+			let result = dataArray
+				.filter((el) => el >= nilaiAwal && el <= nilaiAkhir)
+				.sort((a, b) => a - b);
+			if (result.length === 0) {
+				console.log("[!] Nilai tidak ditemukan :", result);
+			} else {
+				console.log(result);
+			}
 		}
+	} else {
+		console.log(errorMsg.join("\n"));
 	}
 };
 
