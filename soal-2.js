@@ -38,11 +38,11 @@ const showResult = (arr, limit) => {
 
 	// Melakukan validasi parameter function
 	if (!Array.isArray(arr)) {
-		errorMsg.push("[!] Data yang dimasukkan harus array!");
+		errorMsg.push("[x] Data yang dimasukkan harus array!");
 		error = true;
 	}
 	if (typeof limit !== "number") {
-		errorMsg.push("[!] Limit yang dimasukkan harus number!");
+		errorMsg.push("[x] Limit yang dimasukkan harus number!");
 		error = true;
 	}
 
