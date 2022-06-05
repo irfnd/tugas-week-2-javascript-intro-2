@@ -38,11 +38,11 @@ const showResult = (arr, limit) => {
 
 	// Melakukan validasi parameter function
 	if (!Array.isArray(arr)) {
-		errorMsg.push("[x] Data yang dimasukkan harus array!");
+		errorMsg.push("Data yang dimasukkan harus array!");
 		error = true;
 	}
 	if (typeof limit !== "number") {
-		errorMsg.push("[x] Limit yang dimasukkan harus number!");
+		errorMsg.push("Limit yang dimasukkan harus number!");
 		error = true;
 	}
 
@@ -65,15 +65,15 @@ const searchName = (filter, limit = 1, callback) => {
 
 	// Melakukan validasi parameter function
 	if (typeof filter !== "string") {
-		errorMsg.push("[x] Filter yang dimasukkan harus string!");
+		errorMsg.push("Filter yang dimasukkan harus string!");
 		error = true;
 	}
 	if (typeof limit !== "number") {
-		errorMsg.push("[x] Limit yang dimasukkan harus number!");
+		errorMsg.push("Limit yang dimasukkan harus number!");
 		error = true;
 	}
 	if (typeof callback !== "function") {
-		errorMsg.push("[x] Callback yang dimasukkan harus function!");
+		errorMsg.push("Callback yang dimasukkan harus function!");
 		error = true;
 	}
 
