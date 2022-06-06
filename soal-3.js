@@ -40,7 +40,9 @@ const seleksiNilai = (nilaiAwal, nilaiAkhir, dataArray) => {
 			console.log("Jumlah angka dalam dataArray harus lebih dari 5");
 		} else {
 			let result = dataArray
-				.filter((el) => el >= nilaiAwal && el <= nilaiAkhir)
+				.filter(
+					(el) => typeof el === "number" && el >= nilaiAwal && el <= nilaiAkhir
+				)
 				.sort((a, b) => a - b);
 			if (result.length === 0) {
 				console.log("Nilai tidak ditemukan :", result);
