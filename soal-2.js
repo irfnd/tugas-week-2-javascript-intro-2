@@ -26,6 +26,7 @@ const names = [
 	"Faith",
 	"Olivia",
 	"Penelope",
+	{},
 ];
 
 /**
@@ -78,8 +79,10 @@ const searchName = (filter, limit = 1, callback) => {
 	}
 
 	if (!error) {
-		let result = names.filter((el) =>
-			el.toLowerCase().includes(filter.toLowerCase())
+		let result = names.filter(
+			(el) =>
+				typeof el === "string" &&
+				el.toLowerCase().includes(filter.toLowerCase())
 		);
 		console.log(callback(result, limit));
 	} else {
